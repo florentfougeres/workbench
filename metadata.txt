@@ -34,3 +34,4 @@ repository=https://github.com/qgist/workbench
 experimental=True
 deprecated=False
 icon=icons/workbench.svg
+supportsQt6=True
