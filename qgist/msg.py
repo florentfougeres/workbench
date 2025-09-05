@@ -28,8 +28,7 @@ specific language governing rights and limitations under the License.
 # IMPORT (External Dependencies)
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-from PyQt5.Qt import QWidget
-from PyQt5.QtWidgets import QMessageBox
+from qgis.PyQt.QtWidgets import QMessageBox, QWidget
 
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -44,29 +43,36 @@ from .util import translate
 # ROUTINES
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-def msg_critical(exception, widget = None):
 
-    _msg('critical', translate('global', 'Critical error'), exception, widget)
+def msg_critical(exception, widget=None):
 
-def msg_warning(exception, widget = None):
+    _msg("critical", translate("global", "Critical error"), exception, widget)
 
-    _msg('warning', translate('global', 'Warning'), exception, widget)
 
-def _msg(msg_type, msg_title, exception, widget = None):
+def msg_warning(exception, widget=None):
+
+    _msg("warning", translate("global", "Warning"), exception, widget)
+
+
+def _msg(msg_type, msg_title, exception, widget=None):
 
     if not isinstance(exception, Exception):
-        raise QgistTypeError(translate('global', '"exception" must be of type Exception. (msg)'))
+        raise QgistTypeError(
+            translate("global", '"exception" must be of type Exception. (msg)')
+        )
     if not isinstance(widget, QWidget) and widget is not None:
-        raise QgistTypeError(translate('global', '"widget" must be of type QWidget or None. (msg)'))
+        raise QgistTypeError(
+            translate("global", '"widget" must be of type QWidget or None. (msg)')
+        )
 
     if len(exception.args) == 0:
-        msg = translate('global', 'Internal error. No description can be provided. Please file a bug. (msg)')
+        msg = translate(
+            "global",
+            "Internal error. No description can be provided. Please file a bug. (msg)",
+        )
     else:
         msg = str(exception.args[0])
 
     getattr(QMessageBox, msg_type)(
-        widget,
-        msg_title,
-        msg,
-        QMessageBox.Ok
-        )
+        widget, msg_title, msg, QMessageBox.StandardButton.Ok
+    )

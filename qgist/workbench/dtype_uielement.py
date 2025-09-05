@@ -28,7 +28,7 @@ specific language governing rights and limitations under the License.
 # IMPORT (External Dependencies)
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-from PyQt5.QtWidgets import (
+from qgis.PyQt.QtWidgets import (
     QDockWidget,
     QToolBar,
     )

@@ -35,7 +35,7 @@ import base64
 # IMPORT (External Dependencies)
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-from PyQt5.QtWidgets import (
+from qgis.PyQt.QtWidgets import (
     QDockWidget,
     QMainWindow,
     QToolBar,

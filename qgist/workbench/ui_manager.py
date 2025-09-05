@@ -35,10 +35,10 @@ import os
 # IMPORT (External Dependencies)
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-from PyQt5.QtCore import (
+from qgis.PyQt.QtCore import (
     Qt,
     )
-from PyQt5.QtWidgets import (
+from qgis.PyQt.QtWidgets import (
     QCheckBox,
     QComboBox,
     QFileDialog,
@@ -117,7 +117,7 @@ class ui_manager_class(ui_manager_base_class):
             self._ui_dict['checkbox_unnamedwarning'].setEnabled(False)
         else:
             self._ui_dict['checkbox_unnamedwarning'].setCheckState(
-                Qt.Checked if self._fsm.config.get('show_unnamed_warning', False) else Qt.Unchecked
+                Qt.CheckState.Checked if self._fsm.config.get('show_unnamed_warning', False) else Qt.CheckState.Unchecked
                 )
             def change_unnamedwarning():
                 self._fsm.config['show_unnamed_warning'] = bool(self._ui_dict['checkbox_unnamedwarning'].isChecked())
@@ -286,7 +286,7 @@ class ui_manager_class(ui_manager_base_class):
                         INTERNAL = uielement.name_internal,
                         )
                     )
-                item_checkbox.setCheckState(Qt.Checked if uielement.visibility else Qt.Unchecked)
+                item_checkbox.setCheckState(Qt.CheckState.Checked if uielement.visibility else Qt.CheckState.Unchecked)
                 item_checkbox.setEnabled(uielement.existence)
                 item_checkbox.stateChanged.connect(make_wrapper(item_checkbox, uielement.setVisible))
                 target.setItemWidget(QListWidgetItem(target), item_checkbox)

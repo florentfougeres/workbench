@@ -36,10 +36,10 @@ import platform
 # IMPORT (External Dependencies)
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-from PyQt5.QtGui import (
+from qgis.PyQt.QtGui import (
     QIcon,
     )
-from PyQt5.QtWidgets import (
+from qgis.PyQt.QtWidgets import (
     QAction,
     QComboBox,
     QHBoxLayout,
@@ -263,7 +263,7 @@ class workbench:
             self._ui_dict['combobox_workbench'].setEnabled(True)
 
         try:
-            manager.exec_()
+            manager.exec()
         finally:
             self._ui_dict['combobox_workbench'].setEnabled(True)
 

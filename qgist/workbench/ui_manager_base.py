@@ -35,14 +35,14 @@ import os
 # IMPORT (External Dependencies)
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-from PyQt5.QtCore import (
+from qgis.PyQt.QtCore import (
     QSize,
     Qt,
     )
-from PyQt5.QtGui import (
+from qgis.PyQt.QtGui import (
     QIcon,
     )
-from PyQt5.QtWidgets import (
+from qgis.PyQt.QtWidgets import (
     QCheckBox,
     QDialog,
     QHBoxLayout,
@@ -123,7 +123,7 @@ class ui_manager_base_class(QDialog):
             )))
             toolbutton.setIconSize(QSize(24, 24))  # TODO get icon size from QGis!!!
             toolbutton.setAutoRaise(True)
-            toolbutton.setFocusPolicy(Qt.NoFocus)
+            toolbutton.setFocusPolicy(Qt.FocusPolicy.NoFocus)
 
             ui_dict['toolbutton_{NAME:s}'.format(NAME = name)] = toolbutton
 
